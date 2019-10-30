@@ -1,0 +1,8 @@
+{
+  "appId": "com.emmanuelaubrey.ionicstencilweather",
+  "appName": "ionic-steencil-weather",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "cordova": {}
+}
