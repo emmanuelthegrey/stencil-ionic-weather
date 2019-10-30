@@ -1,6 +1,6 @@
 ## Stencil Ionic Mobile Weather App SIMWA :)
 
-## Features
+## General Features
 
 * Basic user interface
 * Retrieves location data using the Geolocation API from Capacitor
@@ -12,6 +12,8 @@
 * Saving data to storage, and loading data from storage
 * Saves with asynchronous methods using async/await
 * Processes data
+
+
 
 
 ## Getting Started
