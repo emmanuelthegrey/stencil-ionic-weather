@@ -1,6 +1,5 @@
 import { Location } from './../interfaces/location';
 import { get, set } from './storage';
-import { Location } from '../interfaces/location';
 
 const TEMPERATURE_UNIT_KEY = "weatherTemperatureUnit";
 const LOCATION_KEY = "weatherUserLocation";
