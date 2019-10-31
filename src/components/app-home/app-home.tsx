@@ -1,10 +1,17 @@
 import { Component, h } from '@stencil/core';
+import { Plugins } from "@capacitor/core";
+const { Geolocation } = Plugins;
 
 @Component({
   tag: 'app-home',
   styleUrl: 'app-home.css'
 })
 export class AppHome {
+
+	async componentDidLoad() {
+		let coordinates = await Geolocation.getCurrentPosition();
+		console.log(coordinates);
+	}
 
   render() {
     return [
