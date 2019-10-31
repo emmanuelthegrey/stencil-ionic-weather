@@ -1,4 +1,5 @@
-import {Component, State, h} from '@stencil/core';
+import { Component, State, h } from '@stencil/core';
+import { SettingsData } from '../../services/settings-data';
 
 @Component({
 	tag: "app-settings",
@@ -10,12 +11,23 @@ export class AppSettings {
 	@State() presetLocation: string = "Ann Arbor";
 	@State() unit: string = "celsius";
 
+	async componentWillLoad() {
+		let [location, unit] = await Promise.all([
+			SettingsData.getLocation(),
+			SettingsData.getTemperatureUnit()
+		]);
+
+		this.userCurrentLocation = location.useCoords;
+		this.presetLocation = location.name;
+		this.unit = unit;
+	}
+
 	render() {
 		return [
 			<ion-header>
 				<ion-toolbar color="primary">
 					<ion-buttons slot="start">
-						<ion-back-button defaultHref="/"/>
+						<ion-back-button defaultHref="/" />
 					</ion-buttons>
 				</ion-toolbar>
 			</ion-header>,
@@ -28,11 +40,11 @@ export class AppSettings {
 				<ion-radio-group>
 					<ion-item>
 						<ion-label>Use current location</ion-label>
-						<ion-radio slot="start" value="current" checked={this.userCurrentLocation}/>
+						<ion-radio slot="start" value="current" checked={this.userCurrentLocation} />
 					</ion-item>
 					<ion-item>
 						<ion-label>Use present location</ion-label>
-						<ion-radio slot="start" value="preset" checked={!this.userCurrentLocation}/>
+						<ion-radio slot="start" value="preset" checked={!this.userCurrentLocation} />
 					</ion-item>
 				</ion-radio-group>
 

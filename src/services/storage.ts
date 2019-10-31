@@ -1,4 +1,3 @@
-import { resolve } from "path";
 
 const storage = window.localStorage;
 
