@@ -22,6 +22,21 @@ export class AppSettings {
 		this.unit = unit;
 	}
 
+	async handleToggleLocation(useLocation: boolean) {
+		this.userCurrentLocation = useLocation;
+		await SettingsData.setUseCoords(this.userCurrentLocation);
+	}
+
+	async handleLocationChange(location: string) {
+		this.presetLocation = location;
+		await SettingsData.setLocationName(location);
+	}
+
+	async handleUnitChange(unit) {
+		this.unit = unit;
+		await SettingsData.setTemperatureUnit(unit)
+	}
+
 	render() {
 		return [
 			<ion-header>
@@ -40,17 +55,31 @@ export class AppSettings {
 				<ion-radio-group>
 					<ion-item>
 						<ion-label>Use current location</ion-label>
-						<ion-radio slot="start" value="current" checked={this.userCurrentLocation} />
+						<ion-radio slot="start"
+							value="current"
+							checked={this.userCurrentLocation}
+							onIonSelect={() => this.handleToggleLocation(true)}
+						/>
 					</ion-item>
 					<ion-item>
 						<ion-label>Use present location</ion-label>
-						<ion-radio slot="start" value="preset" checked={!this.userCurrentLocation} />
+						<ion-radio slot="start"
+							value="preset"
+							checked={!this.userCurrentLocation}
+							onIonSelect={() => this.handleToggleLocation(false)}
+						/>
 					</ion-item>
 				</ion-radio-group>
 
 				<small>When using a preset location, the location listed below will be used.</small>
 				<ion-item>
-					<ion-input type="text" value={this.presetLocation}></ion-input>
+					<ion-input
+						type="text"
+						value={this.presetLocation}
+						onIonInput={(e: any) => {
+							this.handleLocationChange(e.target.value);
+						}}
+					></ion-input>
 				</ion-item>
 
 				<small>
@@ -59,15 +88,27 @@ export class AppSettings {
 				<ion-radio-group>
 					<ion-item>
 						<ion-label>Celsius</ion-label>
-						<ion-radio slot="start" checked={this.unit == "celsius"}></ion-radio>
+						<ion-radio
+						 slot="start"
+						  checked={this.unit == "celsius"}
+						  onIonSelect={() => this.handleUnitChange("celsius")}
+						  ></ion-radio>
 					</ion-item>
 					<ion-item>
 						<ion-label>Fahrenheit</ion-label>
-						<ion-radio slot="start" checked={this.unit == "fahrenheit"}></ion-radio>
+						<ion-radio
+						 slot="start" 
+						 checked={this.unit == "fahrenheit"}
+						 onIonSelect={() => this.handleUnitChange("fahrenheit")}
+						 ></ion-radio>
 					</ion-item>
 					<ion-item>
 						<ion-label>Kelvin</ion-label>
-						<ion-radio slot="start" checked={this.unit == "kelvin"}></ion-radio>
+						<ion-radio 
+						slot="start" 
+						checked={this.unit == "kelvin"}
+						onIonSelect={() => this.handleUnitChange("kelvin")}
+						></ion-radio>
 					</ion-item>
 					<small hidden={this.unit != "kelvin"}>Come on, Kelvin? Seriously?</small>
 				</ion-radio-group>

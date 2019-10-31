@@ -17,7 +17,8 @@ export class SettingsController {
 	}
 
 	async setTemperatureUnit(unit: string): Promise<void> {
-		await set(TEMPERATURE_UNIT_KEY, unit)
+		
+		await set(TEMPERATURE_UNIT_KEY, unit);
 	}
 
 	async getLocation(): Promise<Location> {
