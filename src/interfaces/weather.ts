@@ -27,6 +27,7 @@ export interface WeatherResponse {
 	base: string;
 	clouds: Object;
 	coord: WeatherCoords;
+	cod: number;
 	dt: number;
 	id: number;
 	main: WeatherMain;
