@@ -1,5 +1,54 @@
 /* Document Level Styles */
+body,
+ion-app {
+  background-color: #14e0d8;
+}
 
+ion-content {
+  --ion-background-color: #14e0d8;
+}
+
+ion-card {
+  --ion-item-background: rgba(255, 255, 255, 0.22);
+  width: 100%;
+  margin-top: auto !important;
+}
+
+ion-col {
+  font-weight: bold;
+}
+ion-refresher {
+  background: var(--ion-background-color);
+}
+.weather-display {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.weather-display p {
+  text-transform: capitalize;
+}
+.weather-display h1 {
+  font-size: 2.5em;
+}
+.weather-display ion-icon {
+  color: #fff;
+  font-size: 10em;
+}
+
+.weather-display .temperature {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+}
+
+app-settings ion-content {
+  --ion-background-color: #fff;
+}
 /*
   The imports below are needed to include our light dom css for global styles such as fonts and colors.
   You can comment out any of these imports if you do not need that css. For example, if you have your own
@@ -29,3 +78,11 @@
   More info about color theming using Ionic:
   https://ionicframework.com/docs/theming/color-generator
 */
+:root {
+	--ion-color-primary: #14e0d8;
+	--ion-color-primary-rgb: 34, 166, 179;
+	--ion-color-primary-contrast: #fff;
+	--ion-color-primary-contrast-rgb: 0, 0, 0;
+	--ion-color-primary-shade: #1e929e;
+	--ion-color-primary-tint: #38afbb;
+	}
