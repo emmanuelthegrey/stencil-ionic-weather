@@ -115,7 +115,7 @@ export class AppHome {
 				<ion-refresher slot="fixed" onIonRefresh={event => this.refreshHandler(event)}></ion-refresher>
 				<div class="weather-display">
 				<ion-icon name={this.weatherIcon} />
-					<h1>{this.weather.main.temp}</h1>
+					<h1>{this.weather.main.temp}&#176;</h1>
 					<p>{this.weather.weather[0].description}</p>
 					<ion-card>
 						<ion-card-header>
