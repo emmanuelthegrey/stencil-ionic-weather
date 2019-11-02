@@ -42,8 +42,16 @@ export class AppHome {
 	@State() weatherIcon: string = "thermometer";
 
 	async componentDidLoad() {
-		let coordinates = await Geolocation.getCurrentPosition();
+		let coordinates
+		try{
+		 coordinates = await Geolocation.getCurrentPosition();
+		}catch (err) {
+			console.log(err, "why did you hate me")
+			SettingsData.setUseCoords(false);
+		}
+		if(coordinates){
 		await SettingsData.setCoords(coordinates.coords.latitude, coordinates.coords.longitude);
+		}
 
 		try {
 			this.weather = await WeatherData.getCurrentWeather();

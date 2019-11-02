@@ -24,6 +24,7 @@ class WeatherDataController {
 		let response;
 
 		try {
+			debugger;
 			if (location.useCoords) {
 				response = await fetch(
 					`https://api.openweathermap.org/data/2.5/weather?

@@ -22,7 +22,7 @@ export class AppSettings {
 		this.unit = unit;
 	}
 
-	async handleToggleLocation(useLocation: boolean) {
+	async handleToggleLocation(useLocation) {
 		this.userCurrentLocation = useLocation;
 		await SettingsData.setUseCoords(this.userCurrentLocation);
 	}
